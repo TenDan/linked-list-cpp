@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 #include "linked_list.h"
 
 void node_it(ListNode* first) {
@@ -9,33 +10,38 @@ void node_it(ListNode* first) {
     }
 }
 
+void fill_list(LinkedList& list, int element_count, int from = 0, int to = 100) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distr(from, to);
+    while(element_count-- > 0)
+        list.append((int) distr(gen));
+}
+
+void print_list(LinkedList& list) {
+    for (int i = 0; i < list.size(); ++i) {
+        std::cout << list.get(i) << ' ';
+    }
+    std::cout << '\n';
+}
+
 int main() {
     //ListNode node1(5), node2(2), node3(10);
     //node1.set_next(&node2);
     //node2.set_next(&node3);
     //node_it(&node1);
     LinkedList list;
-    list.append(2);
-    list.append(5);
-    list.append(3);
+    fill_list(list, 11);
 
-    for (int i = 0; i < 3; ++i)
-        std::cout << list.get(i) << " ";
+    print_list(list);
 
-    std::cout << "\n" << list.get(1) << "\n";
+    list.pop();
 
-    list.remove(1);
+    print_list(list);
 
-    for (int i = 0; i < 2; ++i)
-        std::cout << list.get(i) << " ";
+    list.remove(5);
 
-    std::cout << '\n';
-
-    try {
-        std::cout << list.get(2) << "\n";
-    } catch (std::out_of_range& ex) {
-        std::cout << ex.what() << '\n';
-    }
+    print_list(list);
 
     return 0;
 }
