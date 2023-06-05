@@ -14,6 +14,10 @@ LinkedList::~LinkedList() {
     }
 }
 
+/**
+ * Add element to the end of list
+ * @param value Value of element that should be added to list
+ */
 void LinkedList::append(int value) {
     auto element = this->_first;
     // Add element to list, if empty
@@ -29,6 +33,11 @@ void LinkedList::append(int value) {
     element->_next = new ListNode(value);
 }
 
+/**
+ * Get element of list by index
+ * @param index Index of element that should be returned
+ * @return Value of element
+ */
 int LinkedList::get(int index) {
     int i = 0;
     auto element = this->_first;
@@ -43,6 +52,10 @@ int LinkedList::get(int index) {
     return element->get_value();
 }
 
+/**
+ * Remove element from list by index
+ * @param index Index of element that should be removed
+ */
 void LinkedList::remove(int index) {
     int i = 0;
     auto element = this->_first;
@@ -67,6 +80,9 @@ void LinkedList::remove(int index) {
     delete element;
 }
 
+/**
+ * Remove last element from list
+ */
 void LinkedList::pop() {
     auto element = this->_first;
 
@@ -79,10 +95,15 @@ void LinkedList::pop() {
     element->_next = nullptr;
 }
 
+/**
+ * Get size (elements count) of list
+ * @return Size of list
+ */
 size_t LinkedList::size() {
     size_t current_size = 0;
     auto element = this->_first;
 
+    // Counting list size until it reaches the end
     while (element != nullptr) {
         ++current_size;
         element = element->_next;
