@@ -67,9 +67,16 @@ void LinkedList::remove(int index) {
     delete element;
 }
 
-// TODO: Implement
 void LinkedList::pop() {
+    auto element = this->_first;
 
+    // Getting element before the last one
+    while (element->_next->_next != nullptr) {
+        element = element->_next;
+    }
+
+    delete element->_next;
+    element->_next = nullptr;
 }
 
 size_t LinkedList::size() {
