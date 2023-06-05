@@ -74,7 +74,14 @@ void LinkedList::pop() {
 
 }
 
-// TODO: Implement
 size_t LinkedList::size() {
-    return 0;
+    size_t current_size = 0;
+    auto element = this->_first;
+
+    while (element != nullptr) {
+        ++current_size;
+        element = element->_next;
+    }
+
+    return current_size;
 }
