@@ -29,7 +29,6 @@ void LinkedList::append(int value) {
     element->_next = new ListNode(value);
 }
 
-// TODO: need to throw exception if index is out of range
 int LinkedList::get(int index) {
     int i = 0;
     auto element = this->_first;
@@ -44,7 +43,6 @@ int LinkedList::get(int index) {
     return element->get_value();
 }
 
-// TODO: need to throw exception if index is out of range
 void LinkedList::remove(int index) {
     int i = 0;
     auto element = this->_first;
