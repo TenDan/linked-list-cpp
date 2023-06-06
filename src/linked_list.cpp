@@ -47,7 +47,7 @@ int LinkedList::get(int index) {
         element = element->_next;
         // If we're out of bounds, then throw exception, no sense to going any further
         if (element == nullptr)
-            throw std::out_of_range("List index out of range");
+            throw list_index_out_of_range();
     }
     return element->get_value();
 }
@@ -65,14 +65,14 @@ void LinkedList::remove(int index) {
         element = element->_next;
         // If we're out of bounds, then throw exception, no sense to going any further
         if (element == nullptr)
-            throw std::out_of_range("List index out of range");
+            throw list_index_out_of_range();
     }
     auto one_before = element;
     // Apply to element pointer, that one to remove (according to index)
     element = one_before->_next;
     // If we're out of bounds, then throw exception, no sense to going any further
     if (element == nullptr)
-        throw std::out_of_range("List index out of range");
+        throw list_index_out_of_range();
     if (element->_next != nullptr) {
         auto one_after = element->_next;
         one_before->_next = one_after;

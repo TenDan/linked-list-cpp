@@ -34,4 +34,10 @@ public:
     size_t size();
 };
 
+class list_index_out_of_range : public std::out_of_range {
+public:
+    list_index_out_of_range() : std::out_of_range("List index out of range") {};
+    list_index_out_of_range(const char* message) : std::out_of_range(message) {};
+};
+
 #endif //LINKED_LIST_LINKED_LIST_H
