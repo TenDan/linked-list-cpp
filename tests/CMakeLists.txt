@@ -14,13 +14,17 @@ enable_testing()
 
 include(GoogleTest)
 
+get_filename_component(TEST_SOURCES_DIR .
+        REALPATH)
+
 set(TEST_SOURCES
-        ./all_tests.cpp
-        ./linked_list_test.cpp
+        ${TEST_SOURCES_DIR}/all_tests.cpp
+        ${TEST_SOURCES_DIR}/linked_list_test.cpp
         )
 
 add_executable(
         all_tests
+        ${SOURCE_FILES}
         ${TEST_SOURCES}
 )
 

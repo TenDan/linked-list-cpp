@@ -17,7 +17,12 @@ endif()
 
 include_directories(include)
 
-set(SOURCE_FILES src/linked_list.cpp)
+get_filename_component(SOURCE_FILES_DIR ./src/
+        REALPATH BASE_DIR "${PROJECT_SOURCE_DIR}")
+
+set(SOURCE_FILES
+        ${SOURCE_FILES_DIR}/linked_list.cpp
+        )
 
 add_executable(linked_list
         main.cpp
