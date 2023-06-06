@@ -24,25 +24,4 @@ add_executable(linked_list
         ${SOURCE_FILES}
         )
 
-include(FetchContent)
-FetchContent_Declare(
-        googletest
-        URL https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-enable_testing()
-
-add_executable(
-        linked_list_test
-        tests/linked_list_test.cpp
-)
-
-target_link_libraries(
-        linked_list_test
-        GTest::gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(linked_list_test)
+add_subdirectory(tests)
