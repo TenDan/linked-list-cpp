@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 project(linked_list)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(USE_ASAN true)
 if ((DEFINED USE_ASAN) AND (USE_ASAN STREQUAL "true"))
@@ -23,3 +24,25 @@ add_executable(linked_list
         ${SOURCE_FILES}
         )
 
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
+)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_executable(
+        linked_list_test
+        tests/linked_list_test.cpp
+)
+
+target_link_libraries(
+        linked_list_test
+        GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(linked_list_test)
