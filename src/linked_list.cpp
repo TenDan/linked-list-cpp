@@ -4,6 +4,8 @@
  * Clean up list, if destructed
  */
 LinkedList::~LinkedList() {
+    if (_first == nullptr)
+        return;
     auto next = _first->_next;
     delete _first;
     // Going through elements to destruct each one
@@ -59,6 +61,13 @@ int LinkedList::get(int index) {
 void LinkedList::remove(int index) {
     int i = 0;
     auto element = this->_first;
+
+    if (index == 0 && element != nullptr) {
+        this->_first = element->_next;
+        delete element;
+        return;
+    }
+
     // Iterate through the list until you reach to single element before one you want to remove
     while (i < index - 1) {
         ++i;
