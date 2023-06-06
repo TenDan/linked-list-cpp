@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(linked_list)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 set(USE_ASAN true)
 if ((DEFINED USE_ASAN) AND (USE_ASAN STREQUAL "true"))
