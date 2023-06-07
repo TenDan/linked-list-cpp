@@ -67,11 +67,21 @@ TEST(LinkedListTest, Append) {
     EXPECT_EQ(linkedList.get(0), 2);
 }
 
-TEST(LinkedListTest, ArrayOpOverload) {
+TEST(LinkedListTest, ArrayOpOverloadReadValue) {
     LinkedList linkedList;
     linkedList.append(5);
     linkedList.append(2);
 
     EXPECT_EQ(linkedList[0], 5);
     EXPECT_EQ(linkedList[1], 2);
+}
+
+TEST(LinkedListTest, ArrayOpOverloadChangeValue) {
+    LinkedList linkedList;
+    linkedList.append(2);
+
+    ASSERT_EQ(linkedList[0], 2);
+
+    linkedList[0] = 5;
+    EXPECT_EQ(linkedList[0], 5);
 }
