@@ -57,6 +57,7 @@ TEST(LinkedListTest, Pop) {
     linkedList.pop();
 
     EXPECT_ANY_THROW(linkedList.get(2));
+    EXPECT_NO_FATAL_FAILURE(linkedList.get(1));
 }
 
 TEST(LinkedListTest, Append) {
