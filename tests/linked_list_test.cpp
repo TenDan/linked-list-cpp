@@ -65,3 +65,12 @@ TEST(LinkedListTest, Append) {
 
     EXPECT_EQ(linkedList.get(0), 2);
 }
+
+TEST(LinkedListTest, ArrayOpOverload) {
+    LinkedList linkedList;
+    linkedList.append(5);
+    linkedList.append(2);
+
+    EXPECT_EQ(linkedList[0], 5);
+    EXPECT_EQ(linkedList[1], 2);
+}

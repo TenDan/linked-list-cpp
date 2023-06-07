@@ -64,6 +64,14 @@ int LinkedList::get(size_t index) const {
     return element->_value;
 }
 
+int& LinkedList::operator[](size_t index) {
+    return this->get(index);
+}
+
+int LinkedList::operator[](size_t index) const {
+    return this->get(index);
+}
+
 /**
  * Remove element from list by index
  * @param index Index of element that should be removed
