@@ -35,23 +35,33 @@ void LinkedList::append(int value) {
     element->_next = new ListNode(value);
 }
 
-/**
- * Get element of list by index
- * @param index Index of element that should be returned
- * @return Value of element
- */
-int LinkedList::get(int index) {
+ListNode* LinkedList::iterate_to_index(ListNode* first, int index_to) {
     int i = 0;
-    auto element = this->_first;
+    auto element = first;
     // Iterate through the list until you get element you are satisfied with
-    while (i < index) {
+    while (i < index_to) {
         ++i;
         element = element->_next;
         // If we're out of bounds, then throw exception, no sense to going any further
         if (element == nullptr)
             throw list_index_out_of_range();
     }
-    return element->get_value();
+    return element;
+}
+
+/**
+ * Get element of list by index
+ * @param index Index of element that should be returned
+ * @return Value of element
+ */
+int& LinkedList::get(int index) {
+    auto element = iterate_to_index(this->_first, index);
+    return element->_value;
+}
+
+int LinkedList::get(int index) const {
+    auto element = iterate_to_index(this->_first, index);
+    return element->_value;
 }
 
 /**
@@ -59,7 +69,6 @@ int LinkedList::get(int index) {
  * @param index Index of element that should be removed
  */
 void LinkedList::remove(int index) {
-    int i = 0;
     auto element = this->_first;
 
     if (index == 0 && element != nullptr) {
@@ -69,14 +78,7 @@ void LinkedList::remove(int index) {
     }
 
     // Iterate through the list until you reach to single element before one you want to remove
-    while (i < index - 1) {
-        ++i;
-        element = element->_next;
-        // If we're out of bounds, then throw exception, no sense to going any further
-        if (element == nullptr)
-            throw list_index_out_of_range();
-    }
-    auto one_before = element;
+    auto one_before = iterate_to_index(element, index - 1);
     // Apply to element pointer, that one to remove (according to index)
     element = one_before->_next;
     // If we're out of bounds, then throw exception, no sense to going any further

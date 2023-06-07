@@ -22,13 +22,16 @@ public:
 
 class LinkedList {
     ListNode* _first = nullptr;
+
+    static ListNode* iterate_to_index(ListNode* first, int index_to);
 public:
     LinkedList() = default;
     LinkedList(int initialValue) : _first(new ListNode(initialValue)) {};
     virtual ~LinkedList();
 
     void append(int value);
-    int get(int index);
+    int& get(int index);
+    int get(int index) const;
     void remove(int index);
     void pop();
     size_t size();
