@@ -35,8 +35,8 @@ void LinkedList::append(int value) {
     element->_next = new ListNode(value);
 }
 
-ListNode* LinkedList::iterate_to_index(ListNode* first, int index_to) {
-    int i = 0;
+ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
+    size_t i = 0;
     auto element = first;
     // Iterate through the list until you get element you are satisfied with
     while (i < index_to) {

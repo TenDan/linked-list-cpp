@@ -23,7 +23,7 @@ public:
 class LinkedList {
     ListNode* _first = nullptr;
 
-    static ListNode* iterate_to_index(ListNode* first, int index_to);
+    static ListNode* iterate_to_index(ListNode* first, size_t index_to);
 public:
     LinkedList() = default;
     LinkedList(int initialValue) : _first(new ListNode(initialValue)) {};
