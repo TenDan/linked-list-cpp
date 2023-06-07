@@ -35,6 +35,9 @@ public:
     void remove(int index);
     void pop();
     size_t size();
+
+    int& operator[](size_t index);
+    int operator[](size_t index) const;
 };
 
 class list_index_out_of_range : public std::out_of_range {
