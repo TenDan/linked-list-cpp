@@ -30,9 +30,9 @@ public:
     virtual ~LinkedList();
 
     void append(int value);
-    int& get(int index);
-    int get(int index) const;
-    void remove(int index);
+    int& get(size_t index);
+    int get(size_t index) const;
+    void remove(size_t index);
     void pop();
     size_t size();
 

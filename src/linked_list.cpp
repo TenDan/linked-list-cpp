@@ -54,12 +54,12 @@ ListNode* LinkedList::iterate_to_index(ListNode* first, int index_to) {
  * @param index Index of element that should be returned
  * @return Value of element
  */
-int& LinkedList::get(int index) {
+int& LinkedList::get(size_t index) {
     auto element = iterate_to_index(this->_first, index);
     return element->_value;
 }
 
-int LinkedList::get(int index) const {
+int LinkedList::get(size_t index) const {
     auto element = iterate_to_index(this->_first, index);
     return element->_value;
 }
@@ -68,7 +68,7 @@ int LinkedList::get(int index) const {
  * Remove element from list by index
  * @param index Index of element that should be removed
  */
-void LinkedList::remove(int index) {
+void LinkedList::remove(size_t index) {
     auto element = this->_first;
 
     if (index == 0 && element != nullptr) {
