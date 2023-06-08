@@ -37,6 +37,8 @@ void LinkedList::append(int value) {
 
 ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
     size_t i = 0;
+    if (first == nullptr)
+        throw list_index_out_of_range();
     auto element = first;
     // Iterate through the list until you get element you are satisfied with
     while (i < index_to) {
