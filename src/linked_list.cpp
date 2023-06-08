@@ -130,3 +130,17 @@ size_t LinkedList::size() {
 
     return current_size;
 }
+
+LinkedList::LinkedList(std::initializer_list<int> initializerList) : _first(new ListNode()) {
+    ListNode* current = _first;
+    ListNode* lastBefore = current;
+    for (int element : initializerList) {
+        current->_value = element;
+        current->_next = new ListNode();
+        lastBefore = current;
+        current = current->_next;
+    }
+    if (initializerList.size() > 0)
+        lastBefore->_next = nullptr;
+    delete current;
+}

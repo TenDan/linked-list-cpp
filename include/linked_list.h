@@ -42,7 +42,8 @@ private:
 public:
     // Constructors and destructors
     LinkedList() = default;
-    LinkedList(int initialValue) : _first(new ListNode(initialValue)) {};
+    LinkedList(int firstElementValue) : _first(new ListNode(firstElementValue)) {};
+    LinkedList(std::initializer_list<int> initializerList);
     LinkedList(const LinkedList& linkedList) : _first(new ListNode(*linkedList._first)) {};
     virtual ~LinkedList();
 
