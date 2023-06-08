@@ -37,6 +37,7 @@ void LinkedList::append(int value) {
 
 ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
     size_t i = 0;
+    // If first element is empty, no sense to go any further
     if (first == nullptr)
         throw list_index_out_of_range();
     auto element = first;
@@ -44,7 +45,7 @@ ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
     while (i < index_to) {
         ++i;
         element = element->_next;
-        // If we're out of bounds, then throw exception, no sense to going any further
+        // If we're out of bounds, then throw exception, no sense to go any further
         if (element == nullptr)
             throw list_index_out_of_range();
     }
@@ -54,22 +55,38 @@ ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
 /**
  * Get element of list by index
  * @param index Index of element that should be returned
- * @return Value of element
+ * @return Reference to element
  */
 int& LinkedList::get(size_t index) {
     auto element = iterate_to_index(this->_first, index);
     return element->_value;
 }
 
+/**
+ * Get element of list by index
+ * @param index Index of element that should be returned
+ * @return Value of element
+ */
 int LinkedList::get(size_t index) const {
     auto element = iterate_to_index(this->_first, index);
     return element->_value;
 }
 
+
+/**
+ * Get element of list by index
+ * @param index Index of element that should be returned
+ * @return Reference to element
+ */
 int& LinkedList::operator[](size_t index) {
     return this->get(index);
 }
 
+/**
+ * Get element of list by index
+ * @param index Index of element that should be returned
+ * @return Value of element
+ */
 int LinkedList::operator[](size_t index) const {
     return this->get(index);
 }
