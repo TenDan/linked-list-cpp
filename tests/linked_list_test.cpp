@@ -67,6 +67,22 @@ TEST(LinkedListTest, Append) {
     EXPECT_EQ(linkedList.get(0), 2);
 }
 
+TEST(LinkedListTest, CopyConstructor) {
+    LinkedList linkedList1;
+    linkedList1.append(3);
+    linkedList1.append(2);
+
+    LinkedList linkedList2(linkedList1);
+    EXPECT_EQ(linkedList2[0], 3);
+    EXPECT_EQ(linkedList2[1], 2);
+
+    linkedList2[0] = 4;
+    linkedList2[1] = 5;
+
+    EXPECT_NE(linkedList2[0], linkedList1[0]);
+    EXPECT_NE(linkedList2[1], linkedList1[1]);
+}
+
 TEST(LinkedListTest, ArrayOpOverloadReadValue) {
     LinkedList linkedList;
     linkedList.append(5);
