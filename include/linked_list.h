@@ -45,6 +45,7 @@ public:
     void append(int value);
     int& get(size_t index);
     int get(size_t index) const;
+    void insert_at(size_t index, int value);
     void remove(size_t index);
     void pop();
     size_t size();

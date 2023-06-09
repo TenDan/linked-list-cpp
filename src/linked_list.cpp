@@ -150,6 +150,20 @@ size_t LinkedList::size() {
     return current_size;
 }
 
+/**
+ * Insert element by value on index-based position of list
+ * @param index Index we want to put element in
+ * @param value Value of element
+ */
+void LinkedList::insert_at(size_t index, int value) {
+    auto one_before = iterate_to_index(this->_first, index - 1);
+    auto one_after = one_before->_next;
+
+    auto element_to_insert = new ListNode(value);
+    element_to_insert->_next = one_after;
+    one_before->_next = element_to_insert;
+}
+
 LinkedList::LinkedList(std::initializer_list<int> initializerList) : _first(new ListNode()) {
     ListNode* current = _first;
     ListNode* lastBefore = current;

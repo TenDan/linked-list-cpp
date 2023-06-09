@@ -67,6 +67,23 @@ TEST(LinkedListTest, Append) {
     EXPECT_EQ(linkedList.get(0), 2);
 }
 
+TEST(LinkedListTest, InsertAt) {
+    LinkedList linkedList{1, 3, 5, 9};
+
+    ASSERT_EQ(linkedList[0], 1);
+    ASSERT_EQ(linkedList[1], 3);
+    ASSERT_EQ(linkedList[2], 5);
+    ASSERT_EQ(linkedList[3], 9);
+
+    linkedList.insert_at(2, 4);
+
+    EXPECT_EQ(linkedList[0], 1);
+    EXPECT_EQ(linkedList[1], 3);
+    EXPECT_EQ(linkedList[2], 4);
+    EXPECT_EQ(linkedList[3], 5);
+    EXPECT_EQ(linkedList[4], 9);
+}
+
 TEST(LinkedListTest, CopyConstructor) {
     LinkedList linkedList1;
     linkedList1.append(3);
