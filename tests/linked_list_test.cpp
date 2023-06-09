@@ -83,6 +83,30 @@ TEST(LinkedListTest, CopyConstructor) {
     EXPECT_NE(linkedList2[1], linkedList1[1]);
 }
 
+TEST(LinkedListTest, CopyConstructorForMoreThanTwoElements) {
+    LinkedList linkedList1;
+    linkedList1.append(3);
+    linkedList1.append(2);
+    linkedList1.append(5);
+    linkedList1.append(1);
+
+    LinkedList linkedList2(linkedList1);
+    EXPECT_EQ(linkedList2[0], 3);
+    EXPECT_EQ(linkedList2[1], 2);
+    EXPECT_EQ(linkedList2[2], 5);
+    EXPECT_EQ(linkedList2[3], 1);
+
+    linkedList2[0] = 4;
+    linkedList2[1] = 5;
+    linkedList2[2] = 7;
+    linkedList2[3] = 9;
+
+    EXPECT_NE(linkedList2[0], linkedList1[0]);
+    EXPECT_NE(linkedList2[1], linkedList1[1]);
+    EXPECT_NE(linkedList2[2], linkedList1[2]);
+    EXPECT_NE(linkedList2[3], linkedList1[3]);
+}
+
 TEST(LinkedListTest, InitializerListConstructor) {
     LinkedList linkedList{1, 3, 5};
 

@@ -10,16 +10,10 @@ private:
     // Fields
     int _value;
     ListNode* _next = nullptr;
-
-    ListNode(ListNode* listNode_ptr) : _value(listNode_ptr->_value) {}
 public:
     // Constructors and destructors
     ListNode(int value = 0) : _value(value) {}
-    ListNode(const ListNode& listNode) : _value(listNode._value) {
-        if (listNode._next != nullptr) {
-            this->_next = new ListNode(listNode._next);
-        }
-    }
+    ListNode(const ListNode& listNode) : _value(listNode._value) {}; // Copying only value
     virtual ~ListNode() = default;
 
     // Methods
@@ -44,7 +38,7 @@ public:
     LinkedList() = default;
     LinkedList(int firstElementValue) : _first(new ListNode(firstElementValue)) {};
     LinkedList(std::initializer_list<int> initializerList);
-    LinkedList(const LinkedList& linkedList) : _first(new ListNode(*linkedList._first)) {};
+    LinkedList(const LinkedList& linkedList);
     virtual ~LinkedList();
 
     // Methods

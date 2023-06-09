@@ -163,3 +163,15 @@ LinkedList::LinkedList(std::initializer_list<int> initializerList) : _first(new 
         lastBefore->_next = nullptr;
     delete current;
 }
+
+LinkedList::LinkedList(const LinkedList &linkedList)  : _first(new ListNode(*linkedList._first)) {
+    // Begin copying from next element
+    auto fromCopy = linkedList._first->_next;
+    auto toCopy = this->_first;
+    // Copying each fromCopy until original ends
+    while (fromCopy != nullptr) {
+        toCopy->_next = new ListNode(*fromCopy);
+        toCopy = toCopy->_next;
+        fromCopy = fromCopy->_next;
+    }
+}
