@@ -1,9 +1,11 @@
 #include "linked_list.h"
 
+template class LinkedList<int>;
+
 /**
  * Clean up list, if destructed
  */
-LinkedList::~LinkedList() {
+template <typename Tp> LinkedList<Tp>::~LinkedList() {
     if (_first == nullptr)
         return;
     auto next = _first->_next;
@@ -20,7 +22,7 @@ LinkedList::~LinkedList() {
  * Add element to the end of list
  * @param value Value of element that should be added to list
  */
-void LinkedList::append(int value) {
+template <typename Tp> void LinkedList<Tp>::append(Tp value) {
     auto element = this->_first;
     // Add element to list, if empty
     if (element == nullptr) {
@@ -35,7 +37,7 @@ void LinkedList::append(int value) {
     element->_next = new ListNode(value);
 }
 
-ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
+template <typename Tp> ListNode<Tp>* LinkedList<Tp>::iterate_to_index(ListNode<Tp>* first, size_t index_to) {
     size_t i = 0;
     // If first element is empty, no sense to go any further
     if (first == nullptr)
@@ -57,7 +59,7 @@ ListNode* LinkedList::iterate_to_index(ListNode* first, size_t index_to) {
  * @param index Index of element that should be returned
  * @return Reference to element
  */
-int& LinkedList::get(size_t index) {
+template <typename Tp> Tp& LinkedList<Tp>::get(size_t index) {
     auto element = iterate_to_index(this->_first, index);
     return element->_value;
 }
@@ -67,7 +69,7 @@ int& LinkedList::get(size_t index) {
  * @param index Index of element that should be returned
  * @return Value of element
  */
-int LinkedList::get(size_t index) const {
+template <typename Tp> Tp LinkedList<Tp>::get(size_t index) const {
     auto element = iterate_to_index(this->_first, index);
     return element->_value;
 }
@@ -78,7 +80,7 @@ int LinkedList::get(size_t index) const {
  * @param index Index of element that should be returned
  * @return Reference to element
  */
-int& LinkedList::operator[](size_t index) {
+template <typename Tp> Tp& LinkedList<Tp>::operator[](size_t index) {
     return this->get(index);
 }
 
@@ -87,7 +89,7 @@ int& LinkedList::operator[](size_t index) {
  * @param index Index of element that should be returned
  * @return Value of element
  */
-int LinkedList::operator[](size_t index) const {
+template <typename Tp> Tp LinkedList<Tp>::operator[](size_t index) const {
     return this->get(index);
 }
 
@@ -95,7 +97,7 @@ int LinkedList::operator[](size_t index) const {
  * Remove element from list by index
  * @param index Index of element that should be removed
  */
-void LinkedList::remove(size_t index) {
+template <typename Tp> void LinkedList<Tp>::remove(size_t index) {
     auto element = this->_first;
 
     if (index == 0 && element != nullptr) {
@@ -121,7 +123,7 @@ void LinkedList::remove(size_t index) {
 /**
  * Remove last element from list
  */
-void LinkedList::pop() {
+template <typename Tp> void LinkedList<Tp>::pop() {
     auto element = this->_first;
 
     // Getting element before the last one
@@ -137,7 +139,7 @@ void LinkedList::pop() {
  * Get size (elements count) of list
  * @return Size of list
  */
-size_t LinkedList::size() {
+template <typename Tp> size_t LinkedList<Tp>::size() {
     size_t current_size = 0;
     auto element = this->_first;
 
@@ -155,7 +157,7 @@ size_t LinkedList::size() {
  * @param index Index we want to put element in
  * @param value Value of element
  */
-void LinkedList::insert_at(size_t index, int value) {
+template <typename Tp> void LinkedList<Tp>::insert_at(size_t index, Tp value) {
     auto one_before = iterate_to_index(this->_first, index - 1);
     auto one_after = one_before->_next;
 
@@ -164,12 +166,12 @@ void LinkedList::insert_at(size_t index, int value) {
     one_before->_next = element_to_insert;
 }
 
-LinkedList::LinkedList(std::initializer_list<int> initializerList) : _first(new ListNode()) {
-    ListNode* current = _first;
-    ListNode* lastBefore = current;
+template <typename Tp> LinkedList<Tp>::LinkedList(std::initializer_list<Tp> initializerList) : _first(new ListNode<Tp>()) {
+    ListNode<Tp>* current = _first;
+    ListNode<Tp>* lastBefore = current;
     for (int element : initializerList) {
         current->_value = element;
-        current->_next = new ListNode();
+        current->_next = new ListNode<Tp>();
         lastBefore = current;
         current = current->_next;
     }
@@ -178,7 +180,7 @@ LinkedList::LinkedList(std::initializer_list<int> initializerList) : _first(new 
     delete current;
 }
 
-LinkedList::LinkedList(const LinkedList &linkedList)  : _first(new ListNode(*linkedList._first)) {
+template <typename Tp> LinkedList<Tp>::LinkedList(const LinkedList<Tp> &linkedList)  : _first(new ListNode<Tp>(*linkedList._first)) {
     // Begin copying from next element
     auto fromCopy = linkedList._first->_next;
     auto toCopy = this->_first;

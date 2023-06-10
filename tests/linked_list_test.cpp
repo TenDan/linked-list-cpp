@@ -10,7 +10,7 @@
  * Scenarios which can help with memory leaks and segmentation faults
  */
 TEST(LinkedListTest, Size) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList{};
     linkedList.append(2);
     linkedList.append(3);
     linkedList.append(5);
@@ -26,7 +26,7 @@ TEST(LinkedListTest, Size) {
  * Scenarios which can help with memory leaks and segmentation faults
  */
 TEST(LinkedListTest, Get) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList;
     linkedList.append(1);
 
     ASSERT_EQ(linkedList.get(0), 1);
@@ -40,7 +40,7 @@ TEST(LinkedListTest, Get) {
  * Scenarios which can help with memory leaks and segmentation faults
  */
 TEST(LinkedListTest, Remove) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList;
     linkedList.append(2);
     //linkedList.append(3);
     linkedList.remove(0);
@@ -49,7 +49,7 @@ TEST(LinkedListTest, Remove) {
 }
 
 TEST(LinkedListTest, Pop) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList;
     linkedList.append(5);
     linkedList.append(3);
     linkedList.append(1);
@@ -61,14 +61,14 @@ TEST(LinkedListTest, Pop) {
 }
 
 TEST(LinkedListTest, Append) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList;
     linkedList.append(2);
 
     EXPECT_EQ(linkedList.get(0), 2);
 }
 
 TEST(LinkedListTest, InsertAt) {
-    LinkedList linkedList{1, 3, 5, 9};
+    LinkedList<int> linkedList{1, 3, 5, 9};
 
     ASSERT_EQ(linkedList[0], 1);
     ASSERT_EQ(linkedList[1], 3);
@@ -85,7 +85,7 @@ TEST(LinkedListTest, InsertAt) {
 }
 
 TEST(LinkedListTest, CopyConstructor) {
-    LinkedList linkedList1;
+    LinkedList<int> linkedList1;
     linkedList1.append(3);
     linkedList1.append(2);
 
@@ -101,7 +101,7 @@ TEST(LinkedListTest, CopyConstructor) {
 }
 
 TEST(LinkedListTest, CopyConstructorForMoreThanTwoElements) {
-    LinkedList linkedList1;
+    LinkedList<int> linkedList1;
     linkedList1.append(3);
     linkedList1.append(2);
     linkedList1.append(5);
@@ -125,7 +125,7 @@ TEST(LinkedListTest, CopyConstructorForMoreThanTwoElements) {
 }
 
 TEST(LinkedListTest, InitializerListConstructor) {
-    LinkedList linkedList{1, 3, 5};
+    LinkedList<int> linkedList{1, 3, 5};
 
     EXPECT_EQ(linkedList[0], 1);
     EXPECT_EQ(linkedList[1], 3);
@@ -133,13 +133,13 @@ TEST(LinkedListTest, InitializerListConstructor) {
 }
 
 TEST(LinkedListTest, EmptyInitializerListConstructor) {
-    LinkedList linkedList{};
+    LinkedList<int> linkedList{};
 
     EXPECT_ANY_THROW(linkedList[0]);
 }
 
 TEST(LinkedListTest, ArrayOpOverloadReadValue) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList;
     linkedList.append(5);
     linkedList.append(2);
 
@@ -148,7 +148,7 @@ TEST(LinkedListTest, ArrayOpOverloadReadValue) {
 }
 
 TEST(LinkedListTest, ArrayOpOverloadChangeValue) {
-    LinkedList linkedList;
+    LinkedList<int> linkedList;
     linkedList.append(2);
 
     ASSERT_EQ(linkedList[0], 2);
