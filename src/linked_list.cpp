@@ -1,6 +1,6 @@
 #include "linked_list.h"
 
-template class LinkedList<int>;
+//template class LinkedList<int>;
 
 /**
  * Clean up list, if destructed

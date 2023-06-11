@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "linked_list.h"
+#include "../src/linked_list.cpp"
 
 
 /**
